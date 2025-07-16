@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "yumemi-test",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,6 +27,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
+    "eslint-config-prettier": "^10.1.5",
+    "jest": "^30.0.4",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
