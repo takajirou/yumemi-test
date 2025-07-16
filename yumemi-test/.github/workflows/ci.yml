@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+        branches: [dev, main]
+  pull_request:
+        branches: [dev, main]
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: ソースコードをチェックアウト
+              uses: actions/checkout@v3
+
+            - name: Node.js をセットアップ
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+
+            - name: 依存関係をインストール
+              run: npm ci
+
+            - name: TypeScript チェック
+              run: npx tsc --noEmit
+
+            - name: ESLint チェック
+              run: npm run lint
+
+            - name: テストを実行 (Jest)
+              run: npm run test
