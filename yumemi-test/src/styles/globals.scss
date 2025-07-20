@@ -1,3 +1,4 @@
+@use 'variables' as var;
 @import 'ress/ress.css';
 
 /* ベースのbox-sizingをすべてに適用 */
@@ -16,7 +17,7 @@ body {
     font-family: sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #fdfdfd;
+    background-color: var.$background-color;
     margin: 0;
     padding: 0;
 }
