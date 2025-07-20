@@ -1,6 +1,6 @@
 import usePrefectures from '@/hooks/usePrefectures';
 import { useEffect, useState } from 'react';
-import styles from '@styles/components/PrefectureCheckbox.module.css';
+import styles from '@styles/components/PrefectureCheckbox.module.scss';
 
 interface Pref {
     prefCode: number;
