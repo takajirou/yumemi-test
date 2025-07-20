@@ -29,8 +29,12 @@ const PrefectureCheckbox = ({ onChange }: Props) => {
         );
     };
 
+    const handleReset = () => {
+        setSelectedPref([]);
+    };
+
     return (
-        <>
+        <section className={styles.wrap}>
             <h2 className={styles.title}>都道府県を選択</h2>
             {/* APIから受け取った都道府県リストを元にチェックボックスを表示 */}
             <div className={styles.selectorWrap}>
@@ -46,7 +50,10 @@ const PrefectureCheckbox = ({ onChange }: Props) => {
                     </label>
                 ))}
             </div>
-        </>
+            <button className={styles.resetBtn} onClick={handleReset}>
+                選択をリセットする
+            </button>
+        </section>
     );
 };
 
