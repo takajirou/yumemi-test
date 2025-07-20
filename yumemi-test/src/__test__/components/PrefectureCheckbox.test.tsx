@@ -11,7 +11,6 @@ const mockPrefectures = [
     { prefCode: 13, prefName: '東京都' },
 ];
 
-// 型に合わせたモックを返す
 (usePrefectures as jest.Mock).mockReturnValue({
     data: mockPrefectures,
     isLoading: false,
@@ -55,6 +54,44 @@ describe('PrefectureCheckbox', () => {
 
         fireEvent.click(tokyoCheckbox);
 
-        expect(mockOnChange).toHaveBeenCalledWith([13]);
+        expect(mockOnChange).toHaveBeenLastCalledWith([13]);
+    });
+
+    it('複数のチェックに対応する', () => {
+        const mockOnChange = jest.fn();
+        render(<PrefectureCheckbox onChange={mockOnChange} />, { wrapper });
+
+        const hokkaidoCheckbox = screen.getByLabelText('北海道') as HTMLInputElement;
+        const tokyoCheckbox = screen.getByLabelText('東京都') as HTMLInputElement;
+
+        fireEvent.click(hokkaidoCheckbox);
+        fireEvent.click(tokyoCheckbox);
+
+        expect(mockOnChange).toHaveBeenLastCalledWith([1, 13]);
+    });
+
+    it('チェックを外すとonChangeから削除される', () => {
+        const mockOnChange = jest.fn();
+        render(<PrefectureCheckbox onChange={mockOnChange} />, { wrapper });
+
+        const tokyoCheckbox = screen.getByLabelText('東京都') as HTMLInputElement;
+
+        fireEvent.click(tokyoCheckbox); // チェック
+        fireEvent.click(tokyoCheckbox); // 外す
+
+        expect(mockOnChange).toHaveBeenLastCalledWith([]);
+    });
+
+    it('リセットボタンでチェックが全て外れる', () => {
+        const mockOnChange = jest.fn();
+        render(<PrefectureCheckbox onChange={mockOnChange} />, { wrapper });
+
+        const hokkaidoCheckbox = screen.getByLabelText('北海道') as HTMLInputElement;
+        const resetButton = screen.getByText('選択をリセットする');
+
+        fireEvent.click(hokkaidoCheckbox);
+        fireEvent.click(resetButton);
+
+        expect(mockOnChange).toHaveBeenLastCalledWith([]);
     });
 });
