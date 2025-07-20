@@ -1,5 +1,6 @@
 import usePrefectures from '@/hooks/usePrefectures';
 import { useEffect, useState } from 'react';
+import styles from '@styles/components/PrefectureCheckbox.module.css';
 
 interface Pref {
     prefCode: number;
@@ -21,7 +22,7 @@ const PrefectureCheckbox = ({ onChange }: Props) => {
     if (isLoading) return <p>読み込み中...</p>;
     if (isError) return <p>エラーが発生しました: {error.message}</p>;
 
-    // 選択した都道府県を保存
+    // 選択状態の更新
     const handleCheck = (prefCode: number, checked: boolean) => {
         setSelectedPref(prev =>
             checked ? [...prev, prefCode] : prev.filter(code => code !== prefCode)
@@ -29,21 +30,23 @@ const PrefectureCheckbox = ({ onChange }: Props) => {
     };
 
     return (
-        <div>
+        <>
+            <h2 className={styles.title}>都道府県を選択</h2>
             {/* APIから受け取った都道府県リストを元にチェックボックスを表示 */}
-            {data.map((pref: Pref) => (
-                <div key={pref.prefCode}>
-                    <input
-                        type="checkbox"
-                        id={`pref-${pref.prefCode}`}
-                        value={pref.prefCode}
-                        checked={selectedPref.includes(pref.prefCode)}
-                        onChange={e => handleCheck(pref.prefCode, e.target.checked)}
-                    />
-                    <label htmlFor={`pref-${pref.prefCode}`}>{pref.prefName}</label>
-                </div>
-            ))}
-        </div>
+            <div className={styles.selectorWrap}>
+                {data.map((pref: Pref) => (
+                    <label key={pref.prefCode} className={styles.checkBox}>
+                        <input
+                            type="checkbox"
+                            value={pref.prefCode}
+                            checked={selectedPref.includes(pref.prefCode)}
+                            onChange={e => handleCheck(pref.prefCode, e.target.checked)}
+                        />
+                        {pref.prefName}
+                    </label>
+                ))}
+            </div>
+        </>
     );
 };
 

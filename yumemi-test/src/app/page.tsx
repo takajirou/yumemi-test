@@ -9,8 +9,10 @@ export default function Home() {
     const [selectedPrefCodes, setSelectedPrefCodes] = useState<number[]>([]);
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <PrefectureCheckbox onChange={setSelectedPrefCodes} />
-        </QueryClientProvider>
+        <main style={{ maxWidth: '1000px', margin: 'auto' }}>
+            <QueryClientProvider client={queryClient}>
+                <PrefectureCheckbox onChange={setSelectedPrefCodes} />
+            </QueryClientProvider>
+        </main>
     );
 }
