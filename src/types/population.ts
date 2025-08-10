@@ -23,15 +23,6 @@ export interface PopulationResponse {
     result: PopulationResult;
 }
 
-// usePopulationフックが返すデータの型定義
-export interface PopulationHookData {
-    prefCode: number;
-    data: PopulationResult | undefined;
-    isLoading: boolean;
-    isError: boolean;
-    error: Error | null;
-}
-
 // グラフ用のデータポイントの型定義
 export interface ChartDataPoint {
     year: number;
