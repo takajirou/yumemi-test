@@ -1,7 +1,26 @@
-import { useQueries } from '@tanstack/react-query';
+import { useQueries, UseQueryResult } from '@tanstack/react-query';
 import fetchPopulation from '@/libs/fetchPopulation';
+import { PopulationResult } from '@/types/population';
 
-const usePopulation = (prefCodes: number[]) => {
+// 個別クエリの結果型定義
+interface PopulationQueryResult {
+    prefCode: number;
+    data: PopulationResult | undefined;
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+}
+
+// usePopulationフックの戻り値型定義
+interface UsePopulationReturn {
+    data: PopulationQueryResult[];
+    isLoading: boolean;
+    isError: boolean;
+    errors: (Error | null)[];
+    queries: UseQueryResult<PopulationResult, Error>[];
+}
+
+const usePopulation = (prefCodes: number[]): UsePopulationReturn => {
     const queries = useQueries({
         queries: prefCodes.map(prefCode => ({
             queryKey: ['population', prefCode],
@@ -17,7 +36,7 @@ const usePopulation = (prefCodes: number[]) => {
     const isLoading = queries.some(query => query.isLoading);
     const isError = queries.some(query => query.isError);
     const errors = queries.filter(query => query.isError).map(query => query.error);
-    const data = queries.map((query, index) => ({
+    const data: PopulationQueryResult[] = queries.map((query, index) => ({
         prefCode: prefCodes[index],
         data: query.data,
         isLoading: query.isLoading,
@@ -25,13 +44,12 @@ const usePopulation = (prefCodes: number[]) => {
         error: query.error,
     }));
 
-    // 個別のクエリ結果も必要に応じて使用可能
     return {
         data,
         isLoading,
         isError,
         errors,
-        queries,
+        queries, // 個別のクエリ結果も必要に応じて使用可能
     };
 };
 

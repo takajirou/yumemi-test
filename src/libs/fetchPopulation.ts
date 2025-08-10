@@ -1,7 +1,7 @@
 import apiClient from './apiClient';
-import { PopulationResponse } from '@/types/population';
+import { PopulationResponse, PopulationResult } from '@/types/population';
 
-const fetchPopulation = async (prefCode: number): Promise<PopulationResponse['result']> => {
+const fetchPopulation = async (prefCode: number): Promise<PopulationResult> => {
     const res = await apiClient.get<PopulationResponse>('population/composition/perYear', {
         params: {
             prefCode: prefCode.toString(),
