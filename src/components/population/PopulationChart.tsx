@@ -9,21 +9,21 @@ import PopulationLineChart from '@/components/population/PopulationLineChart';
 import ChartDataInfo from '@/components/population/ChartDataInfo';
 import { useChartDataFormatter } from '@/hooks/useChartFormatters';
 import styles from '@styles/components/PopulationChart.module.scss';
+import { PREFECTURE_MAP } from '@/constants/prefectures';
 
 type PopulationChartProps = {
     prefCode: number[];
     prefNames?: { [key: number]: string };
 };
 
-const PopulationChart = ({ prefCode, prefNames = {} }: PopulationChartProps) => {
+const PopulationChart = ({ prefCode, prefNames = PREFECTURE_MAP }: PopulationChartProps) => {
     const { data, isLoading, isError, errors } = usePopulation(prefCode);
     const [selectedCategory, setSelectedCategory] = useState<string>('total');
-    console.log(data);
 
-    // 成功したデータのみを抽出（早期リターン前に処理）
+    // 成功したデータのみを抽出
     const successfulData = data.filter(item => item.data && !item.isError);
 
-    // グラフデータの整形（フックは条件分岐前に呼び出し）
+    // グラフデータの整形
     const chartData = useChartDataFormatter({
         successfulData,
         selectedCategory,
