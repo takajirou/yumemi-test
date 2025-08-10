@@ -13,7 +13,7 @@ interface Props {
 
 const PrefectureCheckbox = ({ onChange }: Props) => {
     const { data, isLoading, isError, error } = usePrefectures();
-    const [selectedPref, setSelectedPref] = useState<number[]>([13, 27]);
+    const [selectedPref, setSelectedPref] = useState<number[]>([]);
 
     useEffect(() => {
         onChange(selectedPref);
