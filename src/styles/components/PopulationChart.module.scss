@@ -1,0 +1,107 @@
+.container {
+    width: 100%;
+    padding: 24px 0;
+}
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 384px;
+}
+
+.loadingText {
+    font-size: 1.8rem;
+    color: #4a5568;
+}
+
+.errorContainer {
+    padding: 16px;
+    background-color: #fed7d7;
+    border: 1px solid #fc8181;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.errorTitle {
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.errorMessage {
+    color: #e53e3e;
+    font-size: 1.4rem;
+    margin: 4px 0;
+}
+
+.noDataContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 384px;
+}
+
+.noDataText {
+    font-size: 1.8rem;
+    color: #718096;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.buttonActive {
+    background-color: #2563eb;
+    color: white;
+}
+
+.buttonInactive {
+    background-color: #d7d7d7;
+    color: #2d3748;
+}
+
+.buttonInactive:hover {
+    background-color: #cbcbcb;
+}
+
+.titleContainer {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin: 0 0 8px 0;
+}
+
+.subtitle {
+    color: #718096;
+    margin: 0;
+}
+
+.chartContainer {
+    width: 100%;
+    height: 384px;
+    margin-bottom: 16px;
+}
+
+.dataInfo {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #a0aec0;
+}
