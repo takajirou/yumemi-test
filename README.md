@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### 課題レポートへのリンク： [`report.md`](./report.md)
 
-## Getting Started
+---
 
-First, run the development server:
+# 都道府県別・人口構成グラフアプリ
+
+## 機能概要
+
+- ✅ 都道府県一覧をチェックボックスで選択
+- ✅ 総人口・年少人口・生産年齢人口・老年人口の切り替え表示
+- ✅ Recharts を用いた人口推移グラフの描画
+- ✅ ReactQueryを使用したキャッシュ管理による API 通信の最適化
+- ✅ レスポンシブ対応済み
+
+---
+
+## デプロイ先
+
+- URL: [都道府県別・人口構成グラフ](https://yumemi-test-git-dev-takajirous-projects.vercel.app/)
+
+---
+
+## 技術スタック
+
+| 項目           | 使用技術                          |
+| -------------- | --------------------------------- |
+| フレームワーク | Next.js 15 (App Router)           |
+| 言語           | TypeScript                        |
+| グラフ描画     | Recharts                          |
+| 状態管理       | React Hooks (useState, useEffect) |
+| API層          | Axios（`apis/` ディレクトリ）     |
+| テスト         | Jest + React Testing Library      |
+| CI/CD          | GitHub Actions + Vercel           |
+
+---
+
+## テストについて
+
+- APIのユニットテスト
+- カスタムフックのロジックテスト
+- UIコンポーネントの描画テスト
+
+---
+
+## セットアップ手順
+
+```bash
+git clone https://github.com/takajirou/yumemi-test.git
+cd yumemi-test
+npm install
+```
+
+### 環境変数の設定
+
+1. プロジェクトのルートディレクトリに `.env` ファイルを作成
+2. 以下の内容を追加:
+
+```
+NEXT_PUBLIC_API_KEY=<APIキー>
+NEXT_PUBLIC_API_URL=<APIURL>
+```
+
+### 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## お礼の言葉
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+今回の課題を通して、今まで実装経験がなかった CI/CD や Testing の実装を経験する事ができ、フロントエンド開発に関する知識を大きく広げることができました。
+GitHub Actions を活用した自動テスト・デプロイの流れを学べたことは、今後の開発において大きな財産になると感じています。
+この経験を糧に、今後も学び続け、より品質の高いプロダクトを開発できるよう精進していきたいと思います。
