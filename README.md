@@ -28,7 +28,7 @@
 | 言語           | TypeScript                        |
 | グラフ描画     | Recharts                          |
 | 状態管理       | React Hooks (useState, useEffect) |
-| API層          | Axios（`apis/` ディレクトリ）     |
+| API層         | Axios                          |
 | テスト         | Jest + React Testing Library      |
 | CI/CD          | GitHub Actions + Vercel           |
 
