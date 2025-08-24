@@ -15,7 +15,6 @@ export interface PopulationCategory {
 export interface PopulationResult {
     boundaryYear: number;
     data: PopulationCategory[];
-    rate: number;
 }
 
 // APIレスポンス全体の型定義
